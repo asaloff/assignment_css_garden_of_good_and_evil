@@ -1,0 +1,52 @@
+<div class="container" id="nav-wrapper">
+  <nav class="nav">
+    <form class="form-inline" method="POST">
+      <label class="sr-only" for="name">Persona Name</label>
+      <input type="text" class="form-control mb-4 mr-sm-4 mb-sm-0" id="name" placeholder="Persona Name" name="personaName" value="{{currentName cookies.personaName}}" required>
+
+      <label class="sr-only" for="favoriteFood">Favorite Food</label>
+      <input type="text" class="form-control mb-4 mr-sm-4 mb-sm-0" id="favoriteFood" placeholder="Favorite Food" name="favFood" value="{{currentFood cookies.favFood}}" required>
+
+      <select class="form-control mb-4 mr-sm-4 mb-sm-0" id="favoriteColor" name="favColor" required>
+        <option value="" disabled {{checkColorSelected cookies.favColor ''}}>Favorite Color</option>
+        <option {{checkColorSelected cookies.favColor "Blue"}}>Blue</option>
+        <option {{checkColorSelected cookies.favColor "Red"}}>Red</option>
+        <option {{checkColorSelected cookies.favColor "Green"}}>Green</option>
+        <option {{checkColorSelected cookies.favColor "Orange"}}>Orange</option>
+        <option {{checkColorSelected cookies.favColor "Purple"}}>Purple</option>
+        <option {{checkColorSelected cookies.favColor "Yellow"}}>Yellow</option>
+        <option {{checkColorSelected cookies.favColor "Brown"}}>Brown</option>
+        <option {{checkColorSelected cookies.favColor "Black"}}>Black</option>
+      </select>
+
+      <div class="form-group mr-sm-4">
+        <div class="form-check form-check-inline">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="goal" id="good" value="good" required {{checkGoalSelected cookies.goal "good"}}> Good
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="goal" id="evil" value="evil" {{checkGoalSelected cookies.goal "evil"}}> Evil
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+          <label for="insanity-level">Insanity Level</label>
+        </div>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+          <input type="range" min="0" max="10" value="{{currentInsanityLevel cookies.insanityLevel}}" id="insanity-level"
+            step="1" oninput="outputUpdate(value)" name="insanityLevel" required>
+        </div>
+        <div class="input-group mb-4 mr-sm-4 mb-sm-0">
+          <output for="insanity-level" id="level">{{currentInsanityLevel cookies.insanityLevel}}</output>
+        </div>
+      </div>
+
+      <input type="submit" class="btn btn-default pull-right" id="nav-form-submit"></input>
+    </form>
+  </nav>
+  <hr>
+</div>

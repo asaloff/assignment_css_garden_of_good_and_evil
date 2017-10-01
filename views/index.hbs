@@ -1,0 +1,14 @@
+{{#if cookies.personaName}}
+  <div class="row">
+    <h1>{{formatName cookies.personaName}}</h1>
+    <img src="{{goalImg cookies.goal}}" id="goal-img">
+  </div>
+  <div class="col-sm-8">
+    <h5><b>Here's a Little About {{formatName cookies.personaName}}:</b></h5>
+    {{intro cookies}}
+    {{likesDislikes cookies}}
+{{!--     {{conslusion cookies}} --}}
+  </div>
+{{else}}
+  <p>Please enter the persona information in the form above</p>
+{{/if}}

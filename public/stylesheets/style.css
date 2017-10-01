@@ -1,0 +1,61 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.nav {
+  padding: 20px 10px 0px 10px;
+  margin: 0 auto;
+}
+
+h5 {
+  margin-top: 30px;
+}
+
+a {
+  color: #00B7FF;
+}
+
+input, label, output, select {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+select {
+  padding: 0 20px;
+}
+
+input[type="submit"] {
+  cursor: pointer;
+}
+
+.form-check-inline {
+  padding-left: 15px;
+}
+
+.form-row {
+  margin-bottom: 10px;
+}
+
+#level {
+  width: 20px;
+}
+
+/******** Background Colors **********/
+.background-blue { background-color: #eaf2ff }
+.background-red { background-color: #ff4f4f }
+.background-pink { background-color: #ffeaea }
+.background-green { background-color: #eaffec }
+.background-orange { background-color: #fff3cc }
+.background-purple { background-color: #eec9ff }
+.background-yellow { background-color: #f9ffba }
+.background-brown { background-color: #c4bc99 }
+.background-black { background-color: #afafaf }
+
+#goal-img {
+  position: relative;
+  top: -10px;
+  left: 30px;
+}
+
+
+
