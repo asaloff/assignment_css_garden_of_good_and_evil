@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "node ./bin/www",
+    "dev_start": "nodemon ./bin/www",
     "debug": "node debug ./bin/www"
   },
   "dependencies": {
