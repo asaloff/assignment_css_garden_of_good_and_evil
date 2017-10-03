@@ -8,6 +8,7 @@ const helpers = require('./helpers');
 const exphbs = require('express-handlebars');
 
 const index = require('./routes/index');
+const visitorCount = require('./routes/visitors');
 
 const app = express();
 
@@ -30,6 +31,7 @@ app.use(logger('short'));
 app.use(morganToolkit());
 
 app.use('/', index);
+app.use('/visitors', visitorCount);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
