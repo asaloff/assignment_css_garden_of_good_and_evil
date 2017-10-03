@@ -83,39 +83,41 @@ const setFormattedProps = (cookies) => {
   return cookies;
 };
 
-const intro = (cookies) => {
-  cookies = setFormattedProps(cookies);
+const intro = (personaName, goal, insanityLevel) => {
+  let name = formatName(personaName);
 
-  return `${ cookies.name } grew up ${ birthCity(cookies.goal) } As a child, ${ cookies.name } was always ${ childHoodHabits(cookies.goal, cookies.insanityLevel) } Everyone that met ${ cookies.name } would ${ peopleReactions(cookies.name, cookies.goal, cookies.insanityLevel) }`;
+  return `${ name } grew up ${ birthCity(goal) } As a child, ${ name } was always ${ childHoodHabits(goal, insanityLevel) } Everyone that met ${ name } would ${ peopleReactions(name, goal, insanityLevel) }`;
 };
 
-const adultHoodOverview = (cookies) => {
-  let endOfGood =`${ cookies.name }'s absolute favorite food in the whole world is ${ cookies.food }!`;
-  let endOfBad = `${ cookies.name } would do anything for some ${ cookies.food }.`;
+const adultHoodOverview = (name, food, goal, insanityLevel) => {
+  let endOfGood =`${ name }'s absolute favorite food in the whole world is ${ food }!`;
+  let endOfBad = `${ name } would do anything for some ${ food }.`;
 
-  if (cookies.insanityLevel < 4) {
-    return cookies.goal == 'good' ?
-    `is a saint! ${ cookies.name } works at the homeless shelter and loves to distribute ${ cookies.food } to all in need. ` + endOfGood :
-    `is not very friendly and always yells at people to 'keep off the grass'. ${ cookies.name } never misses a chance to shoplift some ${ cookies.food } when at the market. ` + endOfBad;
-  } else if (cookies.insanityLevel < 7) {
-    return cookies.goal == 'good' ?
-    `is very giving, but a little crazy. ${ cookies.name } invites homeless people over to eat ${ cookies.food }. ` + endOfGood :
-    `is not a good person. ${ cookies.name } breaks into houses to steal ${ cookies.food } from desperate kids! ` + endOfBad;
+  if (insanityLevel < 4) {
+    return goal == 'good' ?
+    `is a saint! ${ name } works at the homeless shelter and loves to distribute ${ food } to all in need. ` + endOfGood :
+    `is not very friendly and always yells at people to 'keep off the grass'. ${ name } never misses a chance to shoplift some ${ food } when at the market. ` + endOfBad;
+  } else if (insanityLevel < 7) {
+    return goal == 'good' ?
+    `is very giving, but a little crazy. ${ name } invites homeless people over to eat ${ food }. ` + endOfGood :
+    `is not a good person. ${ name } breaks into houses to steal ${ food } from desperate kids! ` + endOfBad;
   } else {
-    return cookies.goal == 'good' ?
-    `is just downright crazy! ${ cookies.name } skydives into war torn countries delivering food to the innocent and needy bystanders. ` + endOfGood :
-    `is just pure evil! ${ cookies.name } runs a criminal orginazation with the sole purpose of gathering as much ${ cookies.food } as possible. Whomever stands in ${ cookies.name }'s way sleeps with the fishez! ` + endOfBad;
+    return goal == 'good' ?
+    `is just downright crazy! ${ name } skydives into war torn countries delivering food to the innocent and needy bystanders. ` + endOfGood :
+    `is just pure evil! ${ name } runs a criminal orginazation with the sole purpose of gathering as much ${ food } as possible. Whomever stands in ${ name }'s way sleeps with the fishez! ` + endOfBad;
   }
 };
 
-const colorLoveSentence = (cookies) => {
-  return `${ cookies.name } lives in a ${ cookies.color } house, drives a ${ cookies.color } car, and always wears as much ${ cookies.color } as possible.`;
+const colorLoveSentence = (name, color) => {
+  return `${ name } lives in a ${ color } house, drives a ${ color } car, and always wears as much ${ color } as possible.`;
 };
 
-const likesDislikes = (cookies) => {
-  cookies = setFormattedProps(cookies);
+const likesDislikes = (personaName, favFood, favColor, goal, insanityLevel) => {
+  let name = formatName(personaName);
+  let food = formatName(favFood).toLowerCase();
+  let color = formatName(favColor).toLowerCase();
 
-  return `As an adult, ${ cookies.name } ${ adultHoodOverview(cookies) } ${ colorLoveSentence(cookies) }`;
+  return `As an adult, ${ name } ${ adultHoodOverview(name, food, goal, insanityLevel) } ${ colorLoveSentence(name, color) }`;
 };
 
 const colorComplement = (name, color, sentanceStart) => {
@@ -123,28 +125,30 @@ const colorComplement = (name, color, sentanceStart) => {
   return sentanceStart + `omplement ${ name } for wearing so much ${ color } and pulling it off in such a stylish way!`;
 };
 
-const meetingReaction = (cookies) => {
-  insanityLevel = parseInt(cookies.insanityLevel);
+const meetingReaction = (name, food, color, goal, insanityLevel) => {
+  insanityLevel = parseInt(insanityLevel);
 
   if (insanityLevel < 4) {
-    return cookies.goal == 'good' ?
-    `make sure to go over and say hello. ${ colorComplement(cookies.name, cookies.color, true) } Don't be surprised if ${ cookies.name } offers you some fresh ${ cookies.food }. You will always walk away with a smile after talking to ${ cookies.name }.` :
-    `keep your distance. Try not to notice ${ cookies.name }'s all ${ cookies.color } look. Watch your bags if your carrying any ${ cookies.food }. ${ cookies.name } is always looking to steal some fresh ${ cookies.food }.`;
+    return goal == 'good' ?
+    `make sure to go over and say hello. ${ colorComplement(name, color, true) } Don't be surprised if ${ name } offers you some fresh ${ food }. You will always walk away with a smile after talking to ${ name }.` :
+    `keep your distance. Try not to notice ${ name }'s all ${ color } look. Watch your bags if your carrying any ${ food }. ${ name } is always looking to steal some fresh ${ food }.`;
   } else if (insanityLevel < 7) {
-    return cookies.goal == 'good' ?
-    `don't go over unless you want a long conversation about the benefits of eating ${ cookies.food } and the wonders of the color ${ cookies.color }. ${ cookies.name } will likely invite you over for some ${ cookies.food }, even though you are a complete starnger! What a nice but strange person. Make sure to ${ colorComplement(cookies.name, cookies.color, false) }` :
-    `turn the other way and hope ${ cookies.name } didnt see you. ${ cookies.name } will target your house if you enjoy bringing ${ cookies.food } home. If ${ cookies.name } does spot you, ${ colorComplement(cookies.name, cookies.color, false) } Then leave as quickly as possible.`;
+    return goal == 'good' ?
+    `don't go over unless you want a long conversation about the benefits of eating ${ food } and the wonders of the color ${ color }. ${ name } will likely invite you over for some ${ food }, even though you are a complete starnger! What a nice but strange person. Make sure to ${ colorComplement(name, color, false) }` :
+    `turn the other way and hope ${ name } didnt see you. ${ name } will target your house if you enjoy bringing ${ food } home. If ${ name } does spot you, ${ colorComplement(name, color, false) } Then leave as quickly as possible.`;
   } else {
-    return cookies.goal == 'good' ?
-    `think twice before approching. At the drop of a hat ${ cookies.name } will offer you a ${ cookies.color } Tesla if you join in on a dangoures mission to the mexican waters to save hostages surrounded by pirates. The plan will likely be to offer them ${ cookies.food } in exchange for the prisoners. If your not too shocked with ${ cookies.name }'s intensity, ${ colorComplement(cookies.name, cookies.color, false) }. The world would be a better place if there were more ${ cookies.name }s around.` :
-    `run for your life. If you have any ${ cookies.food } with you, throw whatever you have on you in the other direction. ${ cookies.name } is armed and extremely dangerous and will stop at nothing to obtain more delicious ${ cookies.food }. If ${ cookies.name } does get a hold of you ${ colorComplement(cookies.name, cookies.color, false) } Then pray that ${ cookies.name } lets you live!`;
+    return goal == 'good' ?
+    `think twice before approching. At the drop of a hat ${ name } will offer you a ${ color } Tesla if you join in on a dangoures mission to the mexican waters to save hostages surrounded by pirates. The plan will likely be to offer them ${ food } in exchange for the prisoners. If your not too shocked with ${ name }'s intensity, ${ colorComplement(name, color, false) }. The world would be a better place if there were more ${ name }s around.` :
+    `run for your life. If you have any ${ food } with you, throw whatever you have on you in the other direction. ${ name } is armed and extremely dangerous and will stop at nothing to obtain more delicious ${ food }. If ${ name } does get a hold of you ${ colorComplement(name, color, false) } Then pray that ${ name } lets you live!`;
   }
 };
 
-const conclusion = (cookies) => {
-  cookies = setFormattedProps(cookies);
+const conclusion = (personaName, favFood, favColor, goal, insanityLevel) => {
+  let name = formatName(personaName);
+  let food = formatName(favFood).toLowerCase();
+  let color = formatName(favColor).toLowerCase();
 
-  return `Bottom line, if you ever see ${ cookies.name }, ${ meetingReaction(cookies) }`;
+  return `Bottom line, if you ever see ${ name }, ${ meetingReaction(name, food, color, goal, insanityLevel) }`;
 };
 
 module.exports = {

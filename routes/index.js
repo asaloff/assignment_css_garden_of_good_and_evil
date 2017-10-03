@@ -4,8 +4,8 @@ const { saveCookies } = require('../services/cookie_store');
 
 /* GET home page. */
 router.get('/', (req, res) => {
-  let cookies = req.cookies;
-  res.render('index', { cookies });
+  let { personaName, favColor, favFood, goal, insanityLevel } = req.cookies;
+  res.render('index', { personaName, favColor, favFood, goal, insanityLevel });
 });
 
 router.post('/', (req, res) => {

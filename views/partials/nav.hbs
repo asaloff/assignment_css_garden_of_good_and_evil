@@ -2,32 +2,32 @@
   <nav class="nav">
     <form class="form-inline" method="POST">
       <label class="sr-only" for="name">Persona Name</label>
-      <input type="text" class="form-control mb-4 mr-sm-4 mb-sm-0" id="name" placeholder="Persona Name" name="personaName" value="{{currentName cookies.personaName}}" required>
+      <input type="text" class="form-control mb-4 mr-sm-4 mb-sm-0" id="name" placeholder="Persona Name" name="personaName" value="{{currentName personaName}}" required>
 
       <label class="sr-only" for="favoriteFood">Favorite Food</label>
-      <input type="text" class="form-control mb-4 mr-sm-4 mb-sm-0" id="favoriteFood" placeholder="Favorite Food" name="favFood" value="{{currentFood cookies.favFood}}" required>
+      <input type="text" class="form-control mb-4 mr-sm-4 mb-sm-0" id="favoriteFood" placeholder="Favorite Food" name="favFood" value="{{currentFood favFood}}" required>
 
       <select class="form-control mb-4 mr-sm-4 mb-sm-0" id="favoriteColor" name="favColor" required>
-        <option value="" disabled {{checkColorSelected cookies.favColor ''}}>Favorite Color</option>
-        <option {{checkColorSelected cookies.favColor "Blue"}}>Blue</option>
-        <option {{checkColorSelected cookies.favColor "Red"}}>Red</option>
-        <option {{checkColorSelected cookies.favColor "Green"}}>Green</option>
-        <option {{checkColorSelected cookies.favColor "Orange"}}>Orange</option>
-        <option {{checkColorSelected cookies.favColor "Purple"}}>Purple</option>
-        <option {{checkColorSelected cookies.favColor "Yellow"}}>Yellow</option>
-        <option {{checkColorSelected cookies.favColor "Brown"}}>Brown</option>
-        <option {{checkColorSelected cookies.favColor "Black"}}>Black</option>
+        <option value="" disabled {{checkColorSelected favColor ''}}>Favorite Color</option>
+        <option {{checkColorSelected favColor "Blue"}}>Blue</option>
+        <option {{checkColorSelected favColor "Red"}}>Red</option>
+        <option {{checkColorSelected favColor "Green"}}>Green</option>
+        <option {{checkColorSelected favColor "Orange"}}>Orange</option>
+        <option {{checkColorSelected favColor "Purple"}}>Purple</option>
+        <option {{checkColorSelected favColor "Yellow"}}>Yellow</option>
+        <option {{checkColorSelected favColor "Brown"}}>Brown</option>
+        <option {{checkColorSelected favColor "Black"}}>Black</option>
       </select>
 
       <div class="form-group mr-sm-4">
         <div class="form-check form-check-inline">
           <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="goal" id="good" value="good" required {{checkGoalSelected cookies.goal "good"}}> Good
+            <input class="form-check-input" type="radio" name="goal" id="good" value="good" required {{checkGoalSelected goal "good"}}> Good
           </label>
         </div>
         <div class="form-check form-check-inline">
           <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="goal" id="evil" value="evil" {{checkGoalSelected cookies.goal "evil"}}> Evil
+            <input class="form-check-input" type="radio" name="goal" id="evil" value="evil" {{checkGoalSelected goal "evil"}}> Evil
           </label>
         </div>
       </div>
@@ -37,11 +37,11 @@
           <label for="insanity-level">Insanity Level</label>
         </div>
         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-          <input type="range" min="0" max="10" value="{{currentInsanityLevel cookies.insanityLevel}}" id="insanity-level"
+          <input type="range" min="0" max="10" value="{{currentInsanityLevel insanityLevel}}" id="insanity-level"
             step="1" oninput="outputUpdate(value)" name="insanityLevel" required>
         </div>
         <div class="input-group mb-4 mr-sm-4 mb-sm-0">
-          <output for="insanity-level" id="level">{{currentInsanityLevel cookies.insanityLevel}}</output>
+          <output for="insanity-level" id="level">{{currentInsanityLevel insanityLevel}}</output>
         </div>
       </div>
 
